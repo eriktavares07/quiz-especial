@@ -1,0 +1,23 @@
+.RadioLabel {
+  font-size: 18px;
+  line-height: 1;
+  display: grid;
+  grid-template-columns: auto 1em;
+  gap: 0.5em;
+  border: 3px solid var(--color-light-pink);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: left;
+  align-self: center;
+  width: 100%;
+  transition: background-color 250ms linear;
+  cursor: pointer;
+  background-color: var(--color-dark-pink);
+
+  &:hover {
+    background-color: var(--color-light-pink);
+    color: var(--color-dark-pink);
+    font-weight: 700;
+    transition: background-color 250ms linear;
+  }
+}
