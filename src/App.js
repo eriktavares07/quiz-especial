@@ -21,8 +21,8 @@ function App() {
 
   const downloadImage = () => {
     saveAs(
-      "https://www.michiganhumane.org/wp-content/uploads/2018/07/Cat-Google-Maps-1080x675.png",
-      "image.jpg"
+      "https://i.ibb.co/sbGBTcV/certidao-riqque-erik.png",
+      "certidao-erik-rique.jpg"
     );
   };
 
@@ -109,7 +109,7 @@ function App() {
     },
     {
       id: 6,
-      question: `Por um acaso se lhe pedisse em namoro no dia 13/01/2024 ás ${hours}:${minutes}, vc aceitaria hein?`,
+      question: `Por um acaso se lhe pedisse em namoro no dia 13/01/2024 ás ${hours}:${minutes}, vc aceitaria hein 👉👈?`,
       options: [
         { id: 0, text: "Não 😭😭😭😭", isCorrect: false },
         { id: 1, text: "Sim 🥺🥺🥺🥺", isCorrect: true },
@@ -252,8 +252,8 @@ function App() {
         <section className="wrapper final">
           {score === 6 && (
             <div className="card-final">
-              <h1>Certidão emitida!</h1>
-              <p>Agora é oficial segue sua certidão:</p>
+              <h1 className="title">Certidão emitida!</h1>
+              <p className="text">Agora é oficial segue sua certidão:</p>
               <img src={certidao} />
               <button className="btn-next" onClick={downloadImage}>
                 Salvar Certidão
