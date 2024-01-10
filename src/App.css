@@ -59,17 +59,12 @@ opacity: 0.8;
   gap: 50px;
   text-align: center;
 
-  h1 {
-    font-family: "Bungee Spice", sans-serif;
-    font-size: 50px;
-  }
-
-  p {
+  .text {
     font-size: 20px;
     font-weight: bold;
   }
 
-  button {
+  .btn-iniciar {
     width: 100%;
     border-radius: 20px;
     border: none;
@@ -126,17 +121,17 @@ opacity: 0.8;
     justify-content: center;
     gap: 20px;
 
-    h1 {
+    .title {
       font-size: 25px;
       font-weight: bold;
     }
 
-    p {
+    .text {
       font-weight: bold;
       font-size: 20px;
     }
 
-    button {
+    .btn-next {
       width: 100%;
       border-radius: 20px;
       border: none;
@@ -161,20 +156,6 @@ opacity: 0.8;
     img {
       width: 100%;
     }
-    .text_shadows {
-      text-shadow: 3px 3px 0 var(--color-secondary),
-        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
-        12px 12px 0 var(--color-quinary);
-      font-family: bungee, sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: calc(2rem + 5vw);
-      text-align: center;
-      margin: 0;
-      color: var(--color-primary);
-      animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
-      letter-spacing: 0.4rem;
-    }
   }
 }
 
@@ -187,6 +168,20 @@ opacity: 0.8;
 
 #root {
   height: 100%;
+}
+
+.text_shadows {
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+    9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  font-family: bungee, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: calc(2rem + 5vw);
+  text-align: center;
+  margin: 0;
+  color: var(--color-primary);
+  animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+  letter-spacing: 0.4rem;
 }
 
 /** Css Input Custom **/

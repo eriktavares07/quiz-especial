@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useTransition, AnimatedProps, useSpringRef } from "@react-spring/web";
 import FormOptions from "./components/form-options/form-options";
 import certidao from "./assets/certidao.png";
+import { saveAs } from "file-saver";
+
 function App() {
   const [index, set] = useState(0);
 
@@ -15,6 +17,13 @@ function App() {
 
   const onClick = () => {
     set((state) => (state + 1) % 9);
+  };
+
+  const downloadImage = () => {
+    saveAs(
+      "https://www.michiganhumane.org/wp-content/uploads/2018/07/Cat-Google-Maps-1080x675.png",
+      "image.jpg"
+    );
   };
 
   const onClickScore = (isCorrect) => {
@@ -50,52 +59,52 @@ function App() {
   const questions = [
     {
       id: 1,
-      question: "What is the capital of America?",
+      question: "Pergunta 1?",
       options: [
-        { id: 0, text: "New York City", isCorrect: false },
-        { id: 1, text: "Boston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Rique", isCorrect: true },
+        { id: 0, text: "Errada", isCorrect: false },
+        { id: 1, text: "Errada", isCorrect: false },
+        { id: 2, text: "Errada", isCorrect: false },
+        { id: 3, text: "Certa", isCorrect: true },
       ],
     },
     {
       id: 2,
-      question: "What is the sscapital of America?",
+      question: "Pergunta 2?",
       options: [
-        { id: 0, text: "New Yorkdasd City", isCorrect: false },
-        { id: 1, text: "Bostodn", isCorrect: false },
-        { id: 2, text: "Santa dFe", isCorrect: false },
-        { id: 3, text: "Henrique", isCorrect: true },
+        { id: 0, text: "Errada", isCorrect: false },
+        { id: 1, text: "Errada", isCorrect: false },
+        { id: 2, text: "Errada", isCorrect: false },
+        { id: 3, text: "Certa", isCorrect: true },
       ],
     },
     {
       id: 3,
-      question: "What is the dasdcapital of America?",
+      question: "Pergunta 3?",
       options: [
-        { id: 0, text: "New York City", isCorrect: false },
-        { id: 1, text: "Bostoasdn", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Viana", isCorrect: true },
+        { id: 0, text: "Errada", isCorrect: false },
+        { id: 1, text: "Errada", isCorrect: false },
+        { id: 2, text: "Errada", isCorrect: false },
+        { id: 3, text: "Certa", isCorrect: true },
       ],
     },
     {
       id: 4,
-      question: "What dasdis the capital of America?",
+      question: "Pergunta 4?",
       options: [
-        { id: 0, text: "New Ydwwwork City", isCorrect: false },
-        { id: 1, text: "Bosdaston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Jamal", isCorrect: true },
+        { id: 0, text: "Errada", isCorrect: false },
+        { id: 1, text: "Errada", isCorrect: false },
+        { id: 2, text: "Errada", isCorrect: false },
+        { id: 3, text: "Certa", isCorrect: true },
       ],
     },
     {
       id: 5,
-      question: "What dasdis the capital of America?",
+      question: "Pergunta 5?",
       options: [
-        { id: 0, text: "New Ydwwwork City", isCorrect: false },
-        { id: 1, text: "Bosdaston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Washindgton DC", isCorrect: true },
+        { id: 0, text: "Errada", isCorrect: false },
+        { id: 1, text: "Errada", isCorrect: false },
+        { id: 2, text: "Errada", isCorrect: false },
+        { id: 3, text: "Certa", isCorrect: true },
       ],
     },
     {
@@ -108,6 +117,10 @@ function App() {
     },
   ];
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const pages: ((
     props: AnimatedProps<{ style: CSSProperties }>
   ) => React.ReactElement)[] = [
@@ -115,8 +128,12 @@ function App() {
       <animated.div style={{ ...style, height: "100%", overflow: "hidden" }}>
         <section className="wrapper introduction">
           <h1 className="text_shadows">QUIZ</h1>
-          <p>Este quiz traz perguntas importantes, reponda com atenção!</p>
-          <button onClick={onClick}>Iniciar</button>
+          <p className="text">
+            Este quiz traz perguntas importantes, reponda com atenção!
+          </p>
+          <button className="btn-iniciar" onClick={onClick}>
+            Iniciar
+          </button>
         </section>
       </animated.div>
     ),
@@ -185,19 +202,35 @@ function App() {
         </section>
       </animated.div>
     ),
-
     ({ style }) => (
       <animated.div style={{ ...style, height: "100%", overflow: "hidden" }}>
         <section className="wrapper final">
-          <div className="card-final">
-            <h2 className="text_shadows">FIM</h2>
-            <p>Vc acertou {score}</p>
-            <p>
-              Por ter acertado tudo tenho mais uma perguntinha pra vc! Clica ai
-              embaixo pra descobrir
-            </p>
-            <button onClick={onClick}>Revelar</button>
-          </div>
+          {score === 5 && (
+            <div className="card-final">
+              <h2 className="text_shadows">FIM</h2>
+              <p className="text">Você acertou {score}</p>
+              <p className="text">
+                Por ter acertado tudo tenho mais uma perguntinha pra você! Clica
+                ai embaixo pra descobrir
+              </p>
+              <button className="btn-next" onClick={onClick}>
+                Revelar
+              </button>
+            </div>
+          )}
+          {score < 5 && (
+            <div className="card-final">
+              <h2 className="text_shadows">FIM</h2>
+              <p className="text">Você acertou {score} 😭😔</p>
+              <p className="text">
+                Não acertou tudo 😭😔😭😔, tem algo errado aí, clica no botão
+                abaixo pra mais uma chance
+              </p>
+              <button className="btn-next" onClick={refreshPage}>
+                Recomeçar
+              </button>
+            </div>
+          )}
         </section>
       </animated.div>
     ),
@@ -217,11 +250,30 @@ function App() {
     ({ style }) => (
       <animated.div style={{ ...style, height: "100%", overflow: "hidden" }}>
         <section className="wrapper final">
-          <div className="card-final">
-            <h1>Certificado emitido!</h1>
-            <p>Agora é oficial segue seu certificado:</p>
-            <img src={certidao} />
-          </div>
+          {score === 6 && (
+            <div className="card-final">
+              <h1>Certidão emitida!</h1>
+              <p>Agora é oficial segue sua certidão:</p>
+              <img src={certidao} />
+              <button className="btn-next" onClick={downloadImage}>
+                Salvar Certidão
+              </button>
+            </div>
+          )}
+          {score === 5 && (
+            <div className="card-final">
+              <h1 className="title">
+                😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭 <br />
+                Opção errada!
+                <br />
+                😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
+              </h1>
+              <p className="text">Me odeia?</p>
+              <button className="btn-next" onClick={refreshPage}>
+                Mais uma chance 🥺
+              </button>
+            </div>
+          )}
         </section>
       </animated.div>
     ),
