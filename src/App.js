@@ -254,7 +254,7 @@ function App() {
             <div className="card-final">
               <h1 className="title">Certidão emitida!</h1>
               <p className="text">Agora é oficial segue sua certidão:</p>
-              <img src={certidao} />
+              <img width="200" src={certidao} />
               <button className="btn-next" onClick={downloadImage}>
                 Salvar Certidão
               </button>
